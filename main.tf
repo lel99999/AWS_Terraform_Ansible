@@ -9,7 +9,7 @@ provider "aws" {
 resource "aws_instance" "devEC2-01" {
   ami = "ami-6871a115"
   instance_type = "t2.micro"
-  count = 3
+# count = 3
   subnet_id = "subnet-24d3dc62"
   associate_public_ip_address = true
 
