@@ -1,0 +1,21 @@
+---
+- hosts: aws
+  become: yes
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+    - name: Install pre-requisites
+      yum: state=present name="{{item}}"
+      with_items:
+        - git
+        - java-1.8.0-openjdk-devel.x86_64
+
+#   - name: Remove old java
+#     raw: sudo yum remove -y java-1.7.0-openjdk
+
+    - name: install HttpServer 
+      yum: 
+        name: httpd
+        state: latest
+
