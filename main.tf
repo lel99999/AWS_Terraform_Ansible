@@ -14,11 +14,11 @@ resource "aws_instance" "devEC2-01" {
   subnet_id = "subnet-1ceae25a"
   key_name = "lel_aws"
   
-resource "aws_security_group" "selected" {
+#resource "aws_security_group" "selected" {
 #  default = "sg-04a6f5b8a76b9f445"
-  name = "terraform-default"
-}
-  
+#  name = "terraform-default"
+#}
+
   associate_public_ip_address = true
 
   tags {
@@ -26,6 +26,12 @@ resource "aws_security_group" "selected" {
   }
 }
 
+resource "aws_network_interface_sg_attachment" "sg_attachment" {
+# security_group_id    = "${aws_security_group.sg.id}"
+  security_group_id    = "sg-04a6f5b8a76b9f445"
+  network_interface_id = "${aws_instance.devEC2-01.primary_network_interface_id}"
+}
+  
 #resource "aws_security_group" "instance" {
 #  name = "terraform-devEC2-01"
 #
