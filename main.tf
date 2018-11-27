@@ -10,7 +10,15 @@ resource "aws_instance" "devEC2-01" {
   ami = "ami-6871a115"
   instance_type = "t2.micro"
 # count = 3
-  subnet_id = "subnet-24d3dc62"
+# subnet_id = "subnet-24d3dc62"
+  subnet_id = "subnet-1ceae25a"
+  key_name = "lel_aws"
+  
+resource "aws_security_group" "selected" {
+#  default = "sg-04a6f5b8a76b9f445"
+  name = "terraform-default"
+}
+  
   associate_public_ip_address = true
 
   tags {
